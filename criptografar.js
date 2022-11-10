@@ -1,4 +1,4 @@
-const Cripto = function (texto) {
+function Cripto(texto) {
     let aux = ''
     let txtCifrado = ''
     for (let i = 0; i < texto.length; i++) {
@@ -10,8 +10,6 @@ const Cripto = function (texto) {
     }
     return console.log(txtCifrado);
 }
-
-
 
 module.exports = Cripto
 
