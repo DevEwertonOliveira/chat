@@ -1,5 +1,12 @@
 // FILE /client/chat.js
 
+//const Cripto = require("../criptografar");
+
+// import cripto
+//import Cripto from "../criptografar"
+
+//import { Cripto } from "../criptografar"
+
 console.log("chat.js file loaded!");
 
 // IMPORTANT! By default, socket.io() connects to the host that
@@ -57,6 +64,11 @@ messageForm.addEventListener("submit", (e) => {
     // check if there is a message in the input
     if (messageInput.value !== "") {
         let newMessage = messageInput.value;
+        //Cripto(newMessage) = messageInput.value;
+
+        // criptografar mensagem
+
+
         //sends message and our id to socket server
         socket.emit("new-message", { user: socket.id, message: newMessage });
         // appends message in chat container, with isSelf flag true
