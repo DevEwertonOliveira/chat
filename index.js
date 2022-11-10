@@ -37,7 +37,7 @@ function requestHandler(request, response) {
                 });
             } else {
                 response.writeHead(500);
-                response.end("Sorry, there was an error: " + error.code + " ..\n");
+                response.end("Desculpe: tem um erro: " + error.code + " ..\n");
             }
         } else {
             response.writeHead(200, { "Content-Type": contentType });
@@ -78,8 +78,7 @@ io.on("connection", (socket) => {
         // emit welcome message event
         socket.emit("welcome-message", {
             user: "server",
-            message: `Bem vindo ${data.username}. Aqui tem ${Object.keys(users).length
-                } usuários conectados`,
+            message: `Bem vindo ${data.username}.`,
         });
     });
 
