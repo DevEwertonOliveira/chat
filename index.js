@@ -1,6 +1,6 @@
-var http = require("http");
-var fs = require("fs");
-var path = require("path");
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = http.createServer(requestHandler);
 
@@ -11,14 +11,14 @@ console.log(`🖥 HTTP Server running at ${APP_PORT}`);
 function requestHandler(request, response) {
     console.log(`🖥 Received request for ${request.url}`);
     // append /client to serve pages from that folder
-    var filePath = "./client" + request.url;
+    let filePath = "./client" + request.url;
     if (filePath == "./client/") {
         // serve index page on request /
         filePath = "./client/index.html";
     }
-    var extname = String(path.extname(filePath)).toLowerCase();
+    let extname = String(path.extname(filePath)).toLowerCase();
     console.log(`🖥 Serving ${filePath}`);
-    var mimeTypes = {
+    let mimeTypes = {
         ".html": "text/html",
         ".js": "text/javascript",
         ".css": "text/css",
@@ -27,7 +27,7 @@ function requestHandler(request, response) {
         ".gif": "image/gif",
         ".svg": "image/svg+xml",
     };
-    var contentType = mimeTypes[extname] || "application/octet-stream";
+    let contentType = mimeTypes[extname] || "application/octet-stream";
     fs.readFile(filePath, function (error, content) {
         if (error) {
             if (error.code == "ENOENT") {
@@ -63,7 +63,7 @@ io.attach(app, {
     allowEIO3: true,
 });
 
-var users = {};
+let users = {};
 
 io.on("connection", (socket) => {
     console.log("👾 New socket connected! >>", socket.id);
@@ -78,8 +78,8 @@ io.on("connection", (socket) => {
         // emit welcome message event
         socket.emit("welcome-message", {
             user: "server",
-            message: `Welcome to this Socket.io chat ${data.username}. There are ${Object.keys(users).length
-                } users connected`,
+            message: `Bem vindo ${data.username}. Aqui tem ${Object.keys(users).length
+                } usuários conectados`,
         });
     });
 
